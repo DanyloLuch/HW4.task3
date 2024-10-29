@@ -1,12 +1,12 @@
-﻿class Converter
+class Converter
 {
-    private decimal usd;
-    private decimal eur;
+    private decimal USD;
+    private decimal EUR;
 
-    public Converter()
+    public Converter(decimal usd, decimal eur)
     {
-        usd = 41.24M;
-        eur = 45.13M;
+        usd = USD;
+        eur = EUR;
     }
 
     public decimal Convert(decimal amount, string fromCurrency, string toCurrency)
@@ -21,19 +21,19 @@
 
         if (fromCurrency == "UAH" && toCurrency == "USD")
         {
-            return amount / usd;
+            return amount / USD;
         }
         else if (fromCurrency == "UAH" && toCurrency == "EUR")
         {
-            return amount / eur;
+            return amount / EUR;
         }
         else if (fromCurrency == "USD" && toCurrency == "UAH")
         {
-            return amount * usd;
+            return amount * USD;
         }
         else if (fromCurrency == "EUR" && toCurrency == "UAH")
         {
-            return amount * eur;
+            return amount * EUR;
         }
         else if (fromCurrency == toCurrency)
         {
@@ -52,7 +52,7 @@ class Program
     {
         try
         {
-            Converter converter = new Converter();
+            Converter converter = new Converter(41.24M, 45.13M);
 
             Console.WriteLine("Введіть назву валюти яку хочете конвертувати (UAH, USD, EUR): ");
             string fromCurrency = Console.ReadLine().ToUpper().Trim();
